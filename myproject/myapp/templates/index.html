@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Uber Rides Prediction</title>
+</head>
+<body>
+    <h1>Uber Rides Prediction</h1>
+<!--    Scriptlet : adding Python code between HTML code using -->
+<!--    on submit of following form a view named 'test' will be called-->
+    <form action="{% url 'test' %}" method="post">
+<!--    cross-site request forgery : encription strategy of form data : compulsory-->
+        {% csrf_token %}
+        Enter price per week
+        <input type="number" name="ppw">
+        <br><br>
+        Enter Population
+        <input type="number" name="pn">
+        <br><br>
+        Enter Monthly Income
+        <input type="number" name="mi">
+        <br><br>
+        Enter Average Parking per month
+        <input type="number" name="appm">
+        <br><br>
+        <input type="submit" value="Predict">
+    </form>
+<!--    Expression-->
+    {% if res %}
+    <h2>{{res}}</h2>
+    {% endif %}
+</body>
+</html>
